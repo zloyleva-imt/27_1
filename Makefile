@@ -28,6 +28,9 @@ test: # node command line
 connect_api: # node command line
 	@docker-compose -f ${DOCKER_CONFIG} exec  -w /www/ api bash
 
+sequelize_init: # node command line
+	@docker-compose -f ${DOCKER_CONFIG} exec  -w /www/ api npx sequelize-cli init
+
 migrating: # reRun all migrations command line
 	@docker-compose -f ${DOCKER_CONFIG} exec  -w /www/ -T api npx sequelize-cli db:migrate
 
