@@ -1,0 +1,54 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "version": "1.0.0",
+        "title": "Node CMS",
+        "description": "Node CMS"
+    },
+    "servers":[
+        {
+            "url": "http://localhost/api"
+        }
+    ],
+    "tags": [
+        {
+            "name":"Users",
+            "description": "User's routes"
+        }
+    ],
+    "paths": {
+        "/users": {
+            "get": {
+                "tags": ["Users"],
+                "summary": "Get full user's list",
+                "description": "description of User's list route",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/users/{user_id}": {
+            "get": {
+                "tags": ["Users"],
+                "summary": "Get full user's list",
+                "description": "description of User's list route",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "default": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    }
+}

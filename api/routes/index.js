@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const models = require('../models');
+
 router.get('/users', async (req,res) => {
     try{
         let users = await models.User.scope('hidePersonalData').findAll()
@@ -13,5 +14,12 @@ router.get('/users', async (req,res) => {
         });
     }
 });
+
+router.get('/users/:user_id', async (req,res) => {
+    const user = await models.User.scope('hidePersonalData').findByPk(req.params.user_id);
+    res.json({
+        data: user
+    })
+})
 
 module.exports = router;
