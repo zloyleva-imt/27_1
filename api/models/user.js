@@ -7,13 +7,17 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
     age: DataTypes.INTEGER,
     role: DataTypes.ENUM(['admin', 'user']),
+    activeStatus: DataTypes.BOOLEAN,
   }, {
     scopes: {
       hidePersonalData: {
         attributes: {
           exclude: ['password','createdAt','updatedAt']
         }
-      }
+      },
+      activeUsers: {
+          where: { activeStatus: true }
+      },
     } 
   });
   User.associate = function(models) {

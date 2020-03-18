@@ -27,6 +27,25 @@
                         "description": "OK"
                     }
                 }
+            },
+            "post": {
+                "tags": ["Users"],
+                "summary": "Create new user",
+                "description": "description of User's list route",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/User/create"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
             }
         },
         "/users/{user_id}": {
@@ -46,6 +65,39 @@
                 "responses": {
                     "200": {
                         "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "User": {
+            "create": {
+                "type": "object",
+                "properties": {
+                    "firstName": {
+                        "type": "string",
+                        "example": "John"
+                    },
+                    "lastName": {
+                        "type": "string",
+                        "example": "Dow"
+                    },
+                    "email": {
+                        "type": "string",
+                        "example": "Dow@test.com"
+                    },
+                    "password": {
+                        "type": "string",
+                        "example": "123456789"
+                    },
+                    "age": {
+                        "type": "integer",
+                        "example": "21"
+                    },
+                    "role": {
+                        "type": "string",
+                        "example": "user"
                     }
                 }
             }
