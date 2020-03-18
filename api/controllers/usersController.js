@@ -2,7 +2,11 @@ const models = require('../models');
 
 exports.allUsers = async (req,res) => {
     try{
-        let users = await models.User.scope('hidePersonalData').findAll()
+        let users = await models.User.scope('hidePersonalData').findAll({
+            include: {
+                model: models.Order
+            }
+        });
         res.json({
             data: users
         });
